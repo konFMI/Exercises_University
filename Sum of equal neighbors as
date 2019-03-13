@@ -1,0 +1,27 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+namespace SumEqualNumbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<double> temp = Console.ReadLine().Split(" ").Select(double.Parse).ToList();
+            int j = 0;
+            while(j < temp.Count - 1)
+            {
+                
+                if (temp[j] == temp[j+1])
+                {
+                    temp[j] += temp[j + 1];
+                    temp.RemoveAt(j + 1);
+                    j=-1;
+                }
+                j++;
+                
+            }
+            Console.WriteLine(string.Join(" " ,temp));
+        }
+    }
+}
