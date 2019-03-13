@@ -1,0 +1,28 @@
+using System;
+
+namespace CenterPoint
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ReadPoints(double.Parse(Console.ReadLine()), double.Parse(Console.ReadLine()), double.Parse(Console.ReadLine()), double.Parse(Console.ReadLine()));
+        }
+
+        private static void ReadPoints(double x1, double y1, double x2, double y2)
+        {
+            double d1 = Math.Sqrt(x1 * x1 + y1 * y1),
+                    d2 = Math.Sqrt(x2 * x2 + y2 * y2);
+            if (d1 < d2) Print(x1, y1);
+            else Print(x2,y2);
+            return;
+
+        }
+
+        private static void Print(double x, double y)
+        {
+            Console.WriteLine("({0}, {1})",x,y);
+            return;
+        }
+    }
+}
