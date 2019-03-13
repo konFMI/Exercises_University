@@ -1,0 +1,49 @@
+using System;
+
+namespace LongerLine
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            PrintLongerLine();
+        }
+
+        private static void PrintLongerLine()
+        {
+            double x1 = double.Parse(Console.ReadLine()),
+                   y1 = double.Parse(Console.ReadLine()),
+                   t1 = double.Parse(Console.ReadLine()),
+                   p1 = double.Parse(Console.ReadLine()),
+                   x2 = double.Parse(Console.ReadLine()),
+                   y2 = double.Parse(Console.ReadLine()),
+                   t2 = double.Parse(Console.ReadLine()),
+                   p2 = double.Parse(Console.ReadLine());
+            double line1 = Length(x1, y1,t1,p1),
+                   line2 = Length(x2, y2,t2,p2);
+            if (line1 >= line2) Print(x1, y1,t1,p1);
+            else Print(x2, y2,t2,p2);
+            return;
+
+
+        }
+
+        private static double Length(double x, double y,double t,double p)
+        {
+            return Math.Sqrt(Math.Pow(x-t,2) + Math.Pow(y-p,2));
+            
+        }
+        
+        private static void Print(double x, double y, double t,double p)
+        {
+            if(Closer(x,y,t,p)) Console.WriteLine("({0}, {1})({2}, {3})", x, y, t, p);
+            else Console.WriteLine("({0}, {1})({2}, {3})", t, p,x,y);
+            return;
+        }
+
+        private static bool Closer(double x, double y, double t, double p)
+        {
+            return Math.Sqrt(x * x + y * y) <= Math.Sqrt(t * t + p * p);
+        }
+    }
+}
