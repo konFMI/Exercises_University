@@ -1,0 +1,31 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace ChangeList
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+            string command;
+            while ((command = Console.ReadLine()) != "end")
+            {
+                string[] parts = command.Split(" ");
+                switch(parts[0])
+                {
+                    case "Delete":
+                        numbers.RemoveAll(n => n == int.Parse(parts[1]));
+                        break;
+                    case "Insert":
+                        numbers.Insert(int.Parse(parts[2]), int.Parse(parts[1]));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            Console.WriteLine(string.Join(" ", numbers));
+        }
+    }
+}
