@@ -1,0 +1,33 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+namespace MergingLists
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<double> firstList = Console.ReadLine().Split(" ").Select(double.Parse).ToList(),
+                            secondList = Console.ReadLine().Split(" ").Select(double.Parse).ToList(),
+                            finalList = new List<double>(firstList.Count + secondList.Count);
+
+            int i = 0, j = 0;
+            while(i<firstList.Count && j<secondList.Count)
+            {
+                finalList.Add(firstList[i++]);
+                finalList.Add(secondList[j++]);
+            }
+            if(i == firstList.Count)
+            {
+                while (j < secondList.Count)
+                    finalList.Add(secondList[j++]);
+            }
+            else
+            {
+                while (i < firstList.Count)
+                    finalList.Add(firstList[i++]);
+            }
+            Console.WriteLine(String.Join(" ", finalList));
+        }
+    }
+}
