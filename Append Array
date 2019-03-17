@@ -1,0 +1,27 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+namespace AppendArrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> input = Console.ReadLine().Split('|',StringSplitOptions.RemoveEmptyEntries).Reverse().ToList();
+            List<int> array = new List<int>();
+            foreach (string elm in input)
+            {
+                List<int> temp = elm.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
+                array.AddRange(temp);
+            }
+            Print<int>(array);
+        }
+        static void Print<T>(List<T> lists)
+        {
+            foreach (T elm in lists)
+                Console.Write(elm+" ");
+            Console.WriteLine();
+            return;
+        }
+    }
+}
